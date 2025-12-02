@@ -40,8 +40,14 @@ def new_topic(request):
         form = TopicForm(data=request.POST)
         if form.is_valid():
             new_topic = form.save(commit=False)
+            
             new_topic.owner = request.user
             new_topic.save()
+
+            #new
+            #new_topic.difficulty
+            #new_topic.get_difficulty_display()
+
             return redirect('learning_logs:topics')
 
     # Display a blank or invalid form.
